@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Coaching &amp; Workshops | Courageous Coaches</title>
 
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+  <style>
     .cc-pricing-wrapper {
       --cc-font-body: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
       --cc-font-title: clamp(1rem, 0.92rem + 0.45vw, 1.125rem);
@@ -84,35 +86,76 @@
     }
 
     .cc-coaching-table {
+      display: block;
       width: 100%;
-      border-collapse: collapse;
-      table-layout: fixed;
+      max-width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      text-align: left;
       font-family: inherit;
       font-size: var(--cc-font-body);
       line-height: 1.5;
     }
 
+    .cc-coaching-table thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    .cc-coaching-table tbody {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--cc-card-gap);
+    }
+
+    .cc-coaching-table tr {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      min-width: 0;
+      background: #FFFFFF;
+      border: 1px solid rgba(28, 28, 28, 0.12);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(28, 28, 28, 0.05);
+    }
+
     .cc-coaching-table th,
     .cc-coaching-table td {
+      min-width: 0;
       padding: var(--cc-cell-padding);
-      text-align: left;
-      vertical-align: top;
+      font-size: inherit;
       overflow-wrap: anywhere;
-      border-bottom: 1px solid rgba(28, 28, 28, 0.1);
+      vertical-align: middle;
     }
 
     .cc-coaching-table th {
+      background-color: #EBF7FB;
       color: rgba(28, 28, 28, 0.82);
       font-weight: 600;
-      background: #EBF7FB;
+      line-height: 1.35;
     }
 
-    .cc-coaching-table tbody tr:last-child td { border-bottom: 0; }
-    .cc-coaching-table tbody tr:nth-child(even) { background: #F9F9F9; }
+    .cc-coaching-table td { display: block; }
+    .cc-coaching-table td:first-child { grid-column: 1 / -1; }
+    .cc-coaching-table tbody tr:nth-child(even) { background-color: #F9F9F9; }
 
     .cc-coaching-price {
       color: #E91E63;
       font-weight: 700;
+    }
+
+    .cc-coaching-table .cc-cell-label {
+      display: block;
+      margin-bottom: 0.35em;
+      font-size: var(--cc-font-label);
+      font-weight: 600;
+      color: rgba(28, 28, 28, 0.82);
+      line-height: 1.35;
     }
 
     .cc-coaching-note {
@@ -330,6 +373,83 @@
       }
     }
 
+
+    @container cc-pricing (min-width: 60rem) {
+      .cc-coaching-table {
+        display: table;
+        table-layout: fixed;
+        border: 1px solid rgba(28, 28, 28, 0.12);
+        border-radius: 0 0 10px 10px;
+        overflow: hidden;
+      }
+
+      .cc-coaching-table thead {
+        position: static;
+        width: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        clip-path: none;
+        white-space: normal;
+        display: table-header-group;
+      }
+
+      .cc-coaching-table tbody { display: table-row-group; }
+      .cc-coaching-table tr {
+        display: table-row;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .cc-coaching-table td {
+        display: table-cell;
+        border-bottom: 1px solid rgba(28, 28, 28, 0.12);
+      }
+
+      .cc-coaching-table tr:last-child td { border-bottom: 0; }
+      .cc-coaching-table .cc-cell-label { display: none; }
+    }
+
+    @supports not (container-type: inline-size) {
+      @media (min-width: 60rem) {
+        .cc-coaching-table {
+          display: table;
+          table-layout: fixed;
+          border: 1px solid rgba(28, 28, 28, 0.12);
+          border-radius: 0 0 10px 10px;
+          overflow: hidden;
+        }
+
+        .cc-coaching-table thead {
+          position: static;
+          width: auto;
+          height: auto;
+          margin: 0;
+          overflow: visible;
+          clip-path: none;
+          white-space: normal;
+          display: table-header-group;
+        }
+
+        .cc-coaching-table tbody { display: table-row-group; }
+        .cc-coaching-table tr {
+          display: table-row;
+          border: 0;
+          border-radius: 0;
+          box-shadow: none;
+        }
+
+        .cc-coaching-table td {
+          display: table-cell;
+          border-bottom: 1px solid rgba(28, 28, 28, 0.12);
+        }
+
+        .cc-coaching-table tr:last-child td { border-bottom: 0; }
+        .cc-coaching-table .cc-cell-label { display: none; }
+      }
+    }
+
     @container cc-pricing (max-width: 39.99rem) {
       .cc-coaching-grid { grid-template-columns: minmax(0, 1fr); }
     }
@@ -362,19 +482,20 @@
       <strong>Let’s explore how we can support your team.</strong>
     </p>
     <p class="cc-pricing-note">
-      <a target="_blank" href="https://www.courageouscoaches.com/about-us/contacts">Connect with us</a>
+      <a target="_blank" rel="noopener noreferrer" href="https://www.courageouscoaches.com/about-us/contacts">Connect with us</a>
       or
-      <a target="_blank" href="https://www.courageouscoaches.com/book-a-discovery-call">book a discovery call</a>.
+      <a target="_blank" rel="noopener noreferrer" href="https://www.courageouscoaches.com/book-a-discovery-call">book a discovery call</a>.
     </p>
 
     <!-- Coaching prices -->
     <section class="cc-coaching-pricing" aria-label="Coaching prices">
       <div class="cc-coaching-grid">
-        <section class="cc-coaching-card" aria-labelledby="cc-corporate-heading">        
-          <table class="cc-pricing-table">
-            <thead role="rowgroup">
-              <tr role="row">
-                <th scope="col" style="width: 52%;">Corporate Coaching</th>
+        <section class="cc-coaching-card" aria-labelledby="cc-corporate-heading">
+          <h3 id="cc-corporate-heading">Corporate Coaching</h3>
+          <table class="cc-coaching-table">
+            <thead>
+              <tr>
+                <th scope="col" style="width: 52%;">Coaching option</th>
                 <th scope="col" style="width: 24%;">Price (excl. VAT)</th>
                 <th scope="col" style="width: 24%;">Price (incl. VAT)</th>
               </tr>
@@ -382,28 +503,29 @@
             <tbody>
               <tr>
                 <td>Individual coaching session</td>
-                <td class="cc-coaching-price">€150</td>
-                <td class="cc-coaching-price">€180</td>
+                <td class="cc-coaching-price"><span class="cc-cell-label">Price (excl. VAT)</span>€150</td>
+                <td class="cc-coaching-price"><span class="cc-cell-label">Price (incl. VAT)</span>€180</td>
               </tr>
               <tr>
                 <td>Package of 5 coaching sessions at €130 each</td>
-                <td class="cc-coaching-price">€650</td>
-                <td class="cc-coaching-price">€780</td>
+                <td class="cc-coaching-price"><span class="cc-cell-label">Price (excl. VAT)</span>€650</td>
+                <td class="cc-coaching-price"><span class="cc-cell-label">Price (incl. VAT)</span>€780</td>
               </tr>
               <tr>
                 <td>Package of 10 coaching sessions at €115 each</td>
-                <td class="cc-coaching-price">€1,150</td>
-                <td class="cc-coaching-price">€1,380</td>
+                <td class="cc-coaching-price"><span class="cc-cell-label">Price (excl. VAT)</span>€1,150</td>
+                <td class="cc-coaching-price"><span class="cc-cell-label">Price (incl. VAT)</span>€1,380</td>
               </tr>
             </tbody>
           </table>
         </section>
 
         <section class="cc-coaching-card" aria-labelledby="cc-individual-heading">
-          <table class="cc-pricing-table">
-            <thead role="rowgroup">
-              <tr role="row">
-                <th scope="col" style="width: 52%;">Individual Coaching</th>
+          <h3 id="cc-individual-heading">Individual Coaching</h3>
+          <table class="cc-coaching-table">
+            <thead>
+              <tr>
+                <th scope="col" style="width: 52%;">Coaching option</th>
                 <th scope="col" style="width: 24%;">Price (excl. VAT)</th>
                 <th scope="col" style="width: 24%;">Price (incl. VAT)</th>
               </tr>
@@ -411,130 +533,129 @@
             <tbody>
               <tr>
                 <td>Individual coaching session</td>
-                <td class="cc-coaching-price">€75</td>
-                <td class="cc-coaching-price">€90</td>
+                <td class="cc-coaching-price"><span class="cc-cell-label">Price (excl. VAT)</span>€75</td>
+                <td class="cc-coaching-price"><span class="cc-cell-label">Price (incl. VAT)</span>€90</td>
               </tr>
               <tr>
                 <td>Package of 5 coaching sessions at €65 each </td>
-                <td class="cc-coaching-price">€325</td>
-                <td class="cc-coaching-price">€390</td>
+                <td class="cc-coaching-price"><span class="cc-cell-label">Price (excl. VAT)</span>€325</td>
+                <td class="cc-coaching-price"><span class="cc-cell-label">Price (incl. VAT)</span>€390</td>
               </tr>
               <tr>
                 <td>Package of 10 coaching sessions at €55 each</td>
-                <td class="cc-coaching-price">€550</td>
-                <td class="cc-coaching-price">€660</td>
+                <td class="cc-coaching-price"><span class="cc-cell-label">Price (excl. VAT)</span>€550</td>
+                <td class="cc-coaching-price"><span class="cc-cell-label">Price (incl. VAT)</span>€660</td>
               </tr>
             </tbody>
           </table>
         </section>
       </div>
-      <p></p>
-      <p class="cc-pricing-note">Before we begin working together, you can take advantage of a free introductory session. Explore <a href="https://www.courageouscoaches.com/about-us/our-coaches" target="_blank">our coaches</a> and book a discovery call.</p>
+      <p class="cc-pricing-note">Before we begin working together, you can take advantage of a free introductory session. Explore <a href="https://www.courageouscoaches.com/about-us/our-coaches" target="_blank" rel="noopener noreferrer">our coaches</a> and book a discovery call.</p>
     </section>
 
     <!-- Workshop prices -->
-    <table role="table" class="cc-pricing-table" aria-label="Courageous Coaches workshops and pricing">
-      <thead role="rowgroup">
-        <tr role="row">
-          <th scope="col" role="columnheader">Workshop</th>
-          <th scope="col" role="columnheader">Brief Description</th>
-          <th scope="col" role="columnheader">Participants</th>
-          <th scope="col" role="columnheader">Duration</th>
-          <th scope="col" role="columnheader">Format</th>
-          <th scope="col" role="columnheader">Price per Group (excl. VAT)</th>
-          <th scope="col" role="columnheader">Price per Group (incl. VAT)</th>
+    <table class="cc-pricing-table" aria-label="Courageous Coaches workshops and pricing">
+      <thead>
+        <tr>
+          <th scope="col">Workshop</th>
+          <th scope="col">Brief Description</th>
+          <th scope="col">Participants</th>
+          <th scope="col">Duration</th>
+          <th scope="col">Format</th>
+          <th scope="col">Price per Group (excl. VAT)</th>
+          <th scope="col">Price per Group (incl. VAT)</th>
         </tr>
       </thead>
       <tbody>
-        <tr role="row">
-          <td role="cell"><span class="cc-title">Courage in the Age of AI – Leading Yourself and Others Through Uncertainty</span></td>
-          <td role="cell"><p class="cc-desc">Discover practical tools for navigating uncertainty and supporting yourself and others in the age of AI.</p></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group (excl. VAT)</span><span class="cc-price">€480</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group (incl. VAT)</span><span class="cc-price">€576</span></td>
+        <tr>
+          <td><span class="cc-title">Courage in the Age of AI – Leading Yourself and Others Through Uncertainty</span></td>
+          <td><p class="cc-desc">Discover practical tools for navigating uncertainty and supporting yourself and others in the age of AI.</p></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
+          <td><span class="cc-cell-label" aria-hidden="true">Price per Group (excl. VAT)</span><span class="cc-price">€480</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Price per Group (incl. VAT)</span><span class="cc-price">€576</span></td>
         </tr>
-        <tr role="row">
-          <td role="cell"><span class="cc-title">Productive, Not Just Busy</span></td>
-          <td role="cell"><p class="cc-desc">Prioritise what matters, improve your focus, and reduce distractions for a more productive working day.</p></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group (excl. VAT)</span><span class="cc-price">€480</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group (incl. VAT)</span><span class="cc-price">€576</span></td>
+        <tr>
+          <td><span class="cc-title">Productive, Not Just Busy</span></td>
+          <td><p class="cc-desc">Prioritise what matters, improve your focus, and reduce distractions for a more productive working day.</p></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
+          <td><span class="cc-cell-label" aria-hidden="true">Price per Group (excl. VAT)</span><span class="cc-price">€480</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Price per Group (incl. VAT)</span><span class="cc-price">€576</span></td>
         </tr>
-        <tr role="row">
-          <td role="cell"><span class="cc-title">Be Your Own Leader – Tools for Everyday Life</span></td>
-          <td role="cell"><p class="cc-desc">Build self-management skills with practical tools for focus, stress management, and everyday resilience.</p></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group (excl. VAT)</span><span class="cc-price">€480</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group (incl. VAT)</span><span class="cc-price">€576</span></td>
+        <tr>
+          <td><span class="cc-title">Be Your Own Leader – Tools for Everyday Life</span></td>
+          <td><p class="cc-desc">Build self-management skills with practical tools for focus, stress management, and everyday resilience.</p></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
+          <td><span class="cc-cell-label" aria-hidden="true">Price per Group (excl. VAT)</span><span class="cc-price">€480</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Price per Group (incl. VAT)</span><span class="cc-price">€576</span></td>
         </tr>
-        <tr role="row">
-          <td role="cell"><span class="cc-title">The Power of Listening</span></td>
-          <td role="cell"><p class="cc-desc">Practise active listening to have more meaningful conversations and better understand the people you interact with.</p></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group (excl. VAT)</span><span class="cc-price">€480</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group (incl. VAT)</span><span class="cc-price">€576</span></td>
+        <tr>
+          <td><span class="cc-title">The Power of Listening</span></td>
+          <td><p class="cc-desc">Practise active listening to have more meaningful conversations and better understand the people you interact with.</p></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
+          <td><span class="cc-cell-label" aria-hidden="true">Price per Group (excl. VAT)</span><span class="cc-price">€480</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Price per Group (incl. VAT)</span><span class="cc-price">€576</span></td>
         </tr>
-        <tr role="row">
-          <td role="cell"><span class="cc-title">Coaching Skills for Leaders</span></td>
-          <td role="cell"><p class="cc-desc">Strengthen autonomy and accountability in your team through active listening, powerful questions, and short coaching conversations.</p></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group (excl. VAT)</span><span class="cc-price">€480</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group (incl. VAT)</span><span class="cc-price">€576</span></td>
+        <tr>
+          <td><span class="cc-title">Coaching Skills for Leaders</span></td>
+          <td><p class="cc-desc">Strengthen autonomy and accountability in your team through active listening, powerful questions, and short coaching conversations.</p></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
+          <td><span class="cc-cell-label" aria-hidden="true">Price per Group (excl. VAT)</span><span class="cc-price">€480</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Price per Group (incl. VAT)</span><span class="cc-price">€576</span></td>
         </tr>
-        <tr role="row">
-          <td role="cell"><span class="cc-title">Emotional Agility – The Path to Sustainable Growth</span></td>
-          <td role="cell"><p class="cc-desc">Learn to work with difficult emotions and take action in line with what matters most to you.</p></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group (excl. VAT)</span><span class="cc-price">€480</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group (incl. VAT)</span><span class="cc-price">€576</span></td>
+        <tr>
+          <td><span class="cc-title">Emotional Agility – The Path to Sustainable Growth</span></td>
+          <td><p class="cc-desc">Learn to work with difficult emotions and take action in line with what matters most to you.</p></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
+          <td><span class="cc-cell-label" aria-hidden="true">Price per Group (excl. VAT)</span><span class="cc-price">€480</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Price per Group (incl. VAT)</span><span class="cc-price">€576</span></td>
         </tr>
-        <tr role="row">
-          <td role="cell"><span class="cc-title">When You Hear “No” – Resilience in the Face of Rejection and Failure</span></td>
-          <td role="cell"><p class="cc-desc">Separate failure from your sense of self-worth and build resilience so you can return to action more quickly.</p></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group (excl. VAT)</span><span class="cc-price">€480</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group (incl. VAT)</span><span class="cc-price">€576</span></td>
+        <tr>
+          <td><span class="cc-title">When You Hear “No” – Resilience in the Face of Rejection and Failure</span></td>
+          <td><p class="cc-desc">Separate failure from your sense of self-worth and build resilience so you can return to action more quickly.</p></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
+          <td><span class="cc-cell-label" aria-hidden="true">Price per Group (excl. VAT)</span><span class="cc-price">€480</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Price per Group (incl. VAT)</span><span class="cc-price">€576</span></td>
         </tr>
-        <tr role="row">
-          <td role="cell"><span class="cc-title">Design Your Worklife – Create a Working Life That Works for You</span></td>
-          <td role="cell"><p class="cc-desc">Use design thinking principles to explore career possibilities and test a small change in your working life.</p></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group (excl. VAT)</span><span class="cc-price">€480</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group (incl. VAT)</span><span class="cc-price">€576</span></td>
+        <tr>
+          <td><span class="cc-title">Design Your Worklife – Create a Working Life That Works for You</span></td>
+          <td><p class="cc-desc">Use design thinking principles to explore career possibilities and test a small change in your working life.</p></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
+          <td><span class="cc-cell-label" aria-hidden="true">Price per Group (excl. VAT)</span><span class="cc-price">€480</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Price per Group (incl. VAT)</span><span class="cc-price">€576</span></td>
         </tr>
-        <tr role="row">
-          <td role="cell"><span class="cc-title">Mentoring or Coaching – When Does Each Approach Work?</span></td>
-          <td role="cell"><p class="cc-desc">Learn when to share experience, when to ask coaching questions, and when to combine the two approaches.</p></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group (excl. VAT)</span><span class="cc-price">€480</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group (incl. VAT)</span><span class="cc-price">€576</span></td>
+        <tr>
+          <td><span class="cc-title">Mentoring or Coaching – When Does Each Approach Work?</span></td>
+          <td><p class="cc-desc">Learn when to share experience, when to ask coaching questions, and when to combine the two approaches.</p></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
+          <td><span class="cc-cell-label" aria-hidden="true">Price per Group (excl. VAT)</span><span class="cc-price">€480</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Price per Group (incl. VAT)</span><span class="cc-price">€576</span></td>
         </tr>
-        <tr role="row">
-          <td role="cell"><span class="cc-title">The Hidden Strength Within – What Am I Not Seeing About Myself?</span></td>
-          <td role="cell"><p class="cc-desc">Explore your own reactions and blind spots to deepen self-awareness and turn hidden qualities into resources.</p></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group (excl. VAT)</span><span class="cc-price">€480</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group (incl. VAT)</span><span class="cc-price">€576</span></td>
+        <tr>
+          <td><span class="cc-title">The Hidden Strength Within – What Am I Not Seeing About Myself?</span></td>
+          <td><p class="cc-desc">Explore your own reactions and blind spots to deepen self-awareness and turn hidden qualities into resources.</p></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
+          <td><span class="cc-cell-label" aria-hidden="true">Price per Group (excl. VAT)</span><span class="cc-price">€480</span></td>
+          <td><span class="cc-cell-label" aria-hidden="true">Price per Group (incl. VAT)</span><span class="cc-price">€576</span></td>
         </tr>
       </tbody>
     </table>
