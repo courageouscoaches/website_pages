@@ -1,1 +1,534 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coaching & Workshops | Courageous Coaches</title>
 
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+    .cc-pricing-wrapper {
+      --cc-font-body: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
+      --cc-font-title: clamp(1rem, 0.92rem + 0.45vw, 1.125rem);
+      --cc-font-description: clamp(0.875rem, 0.82rem + 0.2vw, 1rem);
+      --cc-font-label: clamp(0.75rem, 0.7rem + 0.15vw, 0.875rem);
+      --cc-font-price: clamp(1.125rem, 1rem + 0.4vw, 1.375rem);
+      --cc-cell-padding: clamp(0.75rem, 0.55rem + 0.35vw, 1rem);
+      --cc-card-gap: clamp(0.75rem, 0.5rem + 0.75vw, 1.25rem);
+
+      font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #1C1C1C;
+      margin: 1rem 0;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      container-type: inline-size;
+      container-name: cc-pricing;
+    }
+
+    .cc-pricing-wrapper,
+    .cc-pricing-wrapper * { box-sizing: border-box; }
+
+    @supports (font-size: 1cqi) {
+      .cc-pricing-wrapper {
+        --cc-font-body: clamp(0.875rem, 0.8rem + 0.25cqi, 1rem);
+        --cc-font-title: clamp(1rem, 0.92rem + 0.45cqi, 1.125rem);
+        --cc-font-description: clamp(0.875rem, 0.82rem + 0.2cqi, 1rem);
+        --cc-font-label: clamp(0.75rem, 0.7rem + 0.15cqi, 0.875rem);
+        --cc-font-price: clamp(1.125rem, 1rem + 0.4cqi, 1.375rem);
+        --cc-cell-padding: clamp(0.75rem, 0.55rem + 0.35cqi, 1rem);
+        --cc-card-gap: clamp(0.75rem, 0.5rem + 0.75cqi, 1.25rem);
+      }
+    }
+
+    .cc-pricing-note {
+      margin: 0 0 0.75em;
+      font-size: var(--cc-font-body);
+      color: rgba(28, 28, 28, 0.82);
+      line-height: 1.5;
+    }
+
+    /* Coaching pricing sections */
+    .cc-coaching-pricing {
+      margin: 1.5rem 0 2rem;
+      font-family: inherit;
+      color: #1C1C1C;
+    }
+
+    .cc-coaching-heading {
+      margin: 0 0 1rem;
+      color: #0B9ED3;
+      font-size: clamp(1.2rem, 1rem + 0.6vw, 1.5rem);
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .cc-coaching-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--cc-card-gap);
+    }
+
+    .cc-coaching-card {
+      min-width: 0;
+      overflow: hidden;
+      background: #FFFFFF;
+      border: 1px solid rgba(28, 28, 28, 0.12);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(28, 28, 28, 0.05);
+    }
+
+    .cc-coaching-card h3 {
+      margin: 0;
+      padding: var(--cc-cell-padding);
+      background: #0B9ED3;
+      color: #FFFFFF;
+      font-size: var(--cc-font-title);
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .cc-coaching-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      font-family: inherit;
+      font-size: var(--cc-font-body);
+      line-height: 1.5;
+    }
+
+    .cc-coaching-table th,
+    .cc-coaching-table td {
+      padding: var(--cc-cell-padding);
+      text-align: left;
+      vertical-align: top;
+      overflow-wrap: anywhere;
+      border-bottom: 1px solid rgba(28, 28, 28, 0.1);
+    }
+
+    .cc-coaching-table th {
+      color: rgba(28, 28, 28, 0.82);
+      font-weight: 600;
+      background: #EBF7FB;
+    }
+
+    .cc-coaching-table tbody tr:last-child td { border-bottom: 0; }
+    .cc-coaching-table tbody tr:nth-child(even) { background: #F9F9F9; }
+
+    .cc-coaching-price {
+      color: #E91E63;
+      font-weight: 700;
+    }
+
+    .cc-coaching-note {
+      margin: 0.75rem 0 0;
+      color: rgba(28, 28, 28, 0.82);
+      font-size: var(--cc-font-label);
+      line-height: 1.5;
+    }
+
+    .cc-pricing-table {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      text-align: left;
+      font-family: inherit;
+      font-size: var(--cc-font-body);
+      line-height: 1.5;
+    }
+
+    .cc-pricing-table thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    .cc-pricing-table tbody {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--cc-card-gap);
+    }
+
+    .cc-pricing-table tr {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      min-width: 0;
+      background: #FFFFFF;
+      border: 1px solid rgba(28, 28, 28, 0.12);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(28, 28, 28, 0.05);
+    }
+
+    .cc-pricing-table th,
+    .cc-pricing-table td {
+      min-width: 0;
+      padding: var(--cc-cell-padding);
+      font-size: inherit;
+      overflow-wrap: anywhere;
+      vertical-align: middle;
+    }
+
+    .cc-pricing-table th {
+      background-color: #0B9ED3;
+      color: #FFFFFF;
+      font-weight: 600;
+      line-height: 1.35;
+      letter-spacing: 0.02em;
+    }
+
+    .cc-pricing-table td { display: block; }
+    .cc-pricing-table td:nth-child(-n + 2) { grid-column: 1 / -1; }
+    .cc-pricing-table tbody tr:nth-child(even) { background-color: #F9F9F9; }
+
+    .cc-cell-label {
+      display: block;
+      margin-bottom: 0.35em;
+      font-size: var(--cc-font-label);
+      font-weight: 600;
+      color: rgba(28, 28, 28, 0.82);
+      line-height: 1.35;
+    }
+
+    .cc-title {
+      display: block;
+      margin: 0;
+      color: #0B9ED3;
+      font-size: var(--cc-font-title);
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .cc-desc {
+      margin: 0;
+      color: rgba(28, 28, 28, 0.82);
+      font-size: var(--cc-font-description);
+      line-height: 1.5;
+    }
+
+    .cc-badge {
+      display: inline-block;
+      max-width: 100%;
+      padding: 0.25em 0.65em;
+      border-radius: 999px;
+      background-color: #EBF7FB;
+      color: #1C1C1C;
+      font-size: inherit;
+      font-weight: 500;
+    }
+
+    .cc-price {
+      color: #E91E63;
+      font-size: var(--cc-font-price);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .cc-pricing-table tbody tr { transition: background-color 0.2s ease; }
+      .cc-pricing-table tbody tr:hover { background-color: #EBF7FB; }
+    }
+
+    @container cc-pricing (min-width: 40rem) {
+      .cc-pricing-table tbody { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @container cc-pricing (min-width: 60rem) {
+      .cc-pricing-table {
+        display: table;
+        table-layout: fixed;
+        border: 1px solid rgba(28, 28, 28, 0.12);
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(28, 28, 28, 0.05);
+        overflow: hidden;
+      }
+
+      .cc-pricing-table thead {
+        position: static;
+        width: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        clip-path: none;
+        white-space: normal;
+        display: table-header-group;
+      }
+
+      .cc-pricing-table tbody { display: table-row-group; }
+      .cc-pricing-table tr {
+        display: table-row;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .cc-pricing-table td {
+        display: table-cell;
+        border-bottom: 1px solid rgba(28, 28, 28, 0.12);
+      }
+
+      .cc-pricing-table tr:last-child td { border-bottom: 0; }
+      .cc-cell-label { display: none; }
+      .cc-pricing-table th:nth-child(1) { width: 25%; }
+      .cc-pricing-table th:nth-child(2) { width: 30%; }
+      .cc-pricing-table th:nth-child(3) { width: 12%; }
+      .cc-pricing-table th:nth-child(4) { width: 10%; }
+      .cc-pricing-table th:nth-child(5) { width: 13%; }
+      .cc-pricing-table th:nth-child(6) { width: 10%; }
+    }
+
+    @supports not (container-type: inline-size) {
+      @media (min-width: 40rem) {
+        .cc-pricing-table tbody { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+
+      @media (min-width: 60rem) {
+        .cc-pricing-table {
+          display: table;
+          table-layout: fixed;
+          border: 1px solid rgba(28, 28, 28, 0.12);
+          border-radius: 10px;
+          box-shadow: 0 4px 10px rgba(28, 28, 28, 0.05);
+          overflow: hidden;
+        }
+
+        .cc-pricing-table thead {
+          position: static;
+          width: auto;
+          height: auto;
+          margin: 0;
+          overflow: visible;
+          clip-path: none;
+          white-space: normal;
+          display: table-header-group;
+        }
+
+        .cc-pricing-table tbody { display: table-row-group; }
+        .cc-pricing-table tr {
+          display: table-row;
+          border: 0;
+          border-radius: 0;
+          box-shadow: none;
+        }
+
+        .cc-pricing-table td {
+          display: table-cell;
+          border-bottom: 1px solid rgba(28, 28, 28, 0.12);
+        }
+
+        .cc-pricing-table tr:last-child td { border-bottom: 0; }
+        .cc-cell-label { display: none; }
+        .cc-pricing-table th:nth-child(1) { width: 25%; }
+        .cc-pricing-table th:nth-child(2) { width: 30%; }
+        .cc-pricing-table th:nth-child(3) { width: 12%; }
+        .cc-pricing-table th:nth-child(4) { width: 10%; }
+        .cc-pricing-table th:nth-child(5) { width: 13%; }
+        .cc-pricing-table th:nth-child(6) { width: 10%; }
+      }
+    }
+
+    @container cc-pricing (max-width: 39.99rem) {
+      .cc-coaching-grid { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    @supports not (container-type: inline-size) {
+      @media (max-width: 639px) {
+        .cc-coaching-grid { grid-template-columns: minmax(0, 1fr); }
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cc-pricing-table tbody tr { transition: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="cc-pricing-wrapper">
+    <p class="cc-pricing-note">
+      All workshops and programs can be tailored to your organisation’s context, needs, and goals.
+    </p>
+    <p class="cc-pricing-note">
+      For information about program pricing or to receive a personalised proposal, please get in touch.
+    </p>
+    <p class="cc-pricing-note">
+      <strong>Let’s explore how we can support your team.</strong>
+    </p>
+    <p class="cc-pricing-note">
+      <a href="https://www.courageouscoaches.com/contact">Contact us</a>
+      or
+      <a href="https://www.courageouscoaches.com/services/coaching">book a discovery call</a>.
+    </p>
+
+    <!-- Coaching prices -->
+    <section class="cc-coaching-pricing" aria-labelledby="cc-coaching-heading">
+      <h2 class="cc-coaching-heading" id="cc-coaching-heading">Coaching & Pricing</h2>
+
+      <div class="cc-coaching-grid">
+        <section class="cc-coaching-card" aria-labelledby="cc-corporate-heading">
+          <h3 id="cc-corporate-heading">Corporate Coaching</h3>
+          <table class="cc-coaching-table">
+            <thead>
+              <tr>
+                <th scope="col" style="width: 68%;">Package</th>
+                <th scope="col">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1 introductory session + any number of individual coaching sessions at €150 each</td>
+                <td class="cc-coaching-price">n × €150</td>
+              </tr>
+              <tr>
+                <td>1 introductory session + 5 coaching sessions at €130 each</td>
+                <td class="cc-coaching-price">€650</td>
+              </tr>
+              <tr>
+                <td>1 introductory session + 10 coaching sessions at €115 each</td>
+                <td class="cc-coaching-price">€1,150</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="cc-coaching-card" aria-labelledby="cc-individual-heading">
+          <h3 id="cc-individual-heading">Individual Coaching</h3>
+          <table class="cc-coaching-table">
+            <thead>
+              <tr>
+                <th scope="col" style="width: 68%;">Package</th>
+                <th scope="col">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1 introductory session + any number of individual coaching sessions at €75 each</td>
+                <td class="cc-coaching-price">n × €75</td>
+              </tr>
+              <tr>
+                <td>1 introductory session + 5 coaching sessions at €65 each</td>
+                <td class="cc-coaching-price">€325</td>
+              </tr>
+              <tr>
+                <td>1 introductory session + 10 coaching sessions at €55 each</td>
+                <td class="cc-coaching-price">€550</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+
+      <p class="cc-coaching-note">All prices are exclusive of VAT.</p>
+    </section>
+
+    <!-- Workshop prices -->
+    <table
+      role="table"
+      class="cc-pricing-table"
+      aria-label="Courageous Coaches workshops and pricing"
+    >
+      <thead role="rowgroup">
+        <tr role="row">
+          <th scope="col" role="columnheader">Workshop</th>
+          <th scope="col" role="columnheader">Brief Description</th>
+          <th scope="col" role="columnheader">Participants</th>
+          <th scope="col" role="columnheader">Duration</th>
+          <th scope="col" role="columnheader">Format</th>
+          <th scope="col" role="columnheader">Price per Group*</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr role="row">
+          <td role="cell"><span class="cc-title">Courage in the Age of AI – Leading Yourself and Others Through Uncertainty</span></td>
+          <td role="cell"><p class="cc-desc">Discover practical tools for navigating uncertainty and supporting yourself and others in the age of AI.</p></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group*</span><span class="cc-price">€480</span></td>
+        </tr>
+        <tr role="row">
+          <td role="cell"><span class="cc-title">Productive, Not Just Busy</span></td>
+          <td role="cell"><p class="cc-desc">Prioritise what matters, improve your focus, and reduce distractions for a more productive working day.</p></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group*</span><span class="cc-price">€480</span></td>
+        </tr>
+        <tr role="row">
+          <td role="cell"><span class="cc-title">Be Your Own Leader – Tools for Everyday Life</span></td>
+          <td role="cell"><p class="cc-desc">Build self-management skills with practical tools for focus, stress management, and everyday resilience.</p></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group*</span><span class="cc-price">€480</span></td>
+        </tr>
+        <tr role="row">
+          <td role="cell"><span class="cc-title">The Power of Listening</span></td>
+          <td role="cell"><p class="cc-desc">Practise active listening to have more meaningful conversations and better understand the people you interact with.</p></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group*</span><span class="cc-price">€480</span></td>
+        </tr>
+        <tr role="row">
+          <td role="cell"><span class="cc-title">Coaching Skills for Leaders</span></td>
+          <td role="cell"><p class="cc-desc">Strengthen autonomy and accountability in your team through active listening, powerful questions, and short coaching conversations.</p></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group*</span><span class="cc-price">€480</span></td>
+        </tr>
+        <tr role="row">
+          <td role="cell"><span class="cc-title">Emotional Agility – The Path to Sustainable Growth</span></td>
+          <td role="cell"><p class="cc-desc">Learn to work with difficult emotions and take action in line with what matters most to you.</p></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group*</span><span class="cc-price">€480</span></td>
+        </tr>
+        <tr role="row">
+          <td role="cell"><span class="cc-title">When You Hear “No” – Resilience in the Face of Rejection and Failure</span></td>
+          <td role="cell"><p class="cc-desc">Separate failure from your sense of self-worth and build resilience so you can return to action more quickly.</p></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group*</span><span class="cc-price">€480</span></td>
+        </tr>
+        <tr role="row">
+          <td role="cell"><span class="cc-title">Design Your Worklife – Create a Working Life That Works for You</span></td>
+          <td role="cell"><p class="cc-desc">Use design thinking principles to explore career possibilities and test a small change in your working life.</p></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group*</span><span class="cc-price">€480</span></td>
+        </tr>
+        <tr role="row">
+          <td role="cell"><span class="cc-title">Mentoring or Coaching – When Does Each Approach Work?</span></td>
+          <td role="cell"><p class="cc-desc">Learn when to share experience, when to ask coaching questions, and when to combine the two approaches.</p></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group*</span><span class="cc-price">€480</span></td>
+        </tr>
+        <tr role="row">
+          <td role="cell"><span class="cc-title">The Hidden Strength Within – What Am I Not Seeing About Myself?</span></td>
+          <td role="cell"><p class="cc-desc">Explore your own reactions and blind spots to deepen self-awareness and turn hidden qualities into resources.</p></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Participants</span><span class="cc-badge">10–30 people</span></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Duration</span><span class="cc-badge">90 min</span></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Format</span>Online / on-site</td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Price per Group*</span><span class="cc-price">€480</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="cc-pricing-note" style="margin-top: 0.75rem;">* All prices are exclusive of VAT.</p>
+  </div>
+</body>
+</html>
