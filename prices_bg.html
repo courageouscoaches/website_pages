@@ -19,7 +19,6 @@
 
       font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       color: #1C1C1C;
-      margin: 1rem 0;
       width: 100%;
       max-width: 1100px;
       min-width: 0;
@@ -54,19 +53,10 @@
       line-height: 1.5;
     }
 
-    /* Coaching pricing sections */
     .cc-coaching-pricing {
       margin: 1.5rem 0 2rem;
       font-family: inherit;
       color: #1C1C1C;
-    }
-
-    .cc-coaching-heading {
-      margin: 0 0 1rem;
-      color: #0B9ED3;
-      font-size: clamp(1.2rem, 1rem + 0.6vw, 1.5rem);
-      font-weight: 700;
-      line-height: 1.4;
     }
 
     .cc-coaching-grid {
@@ -310,12 +300,13 @@
         display: none;
       }
 
-      .cc-pricing-table th:nth-child(1) { width: 25%; }
-      .cc-pricing-table th:nth-child(2) { width: 30%; }
-      .cc-pricing-table th:nth-child(3) { width: 12%; }
-      .cc-pricing-table th:nth-child(4) { width: 10%; }
-      .cc-pricing-table th:nth-child(5) { width: 13%; }
-      .cc-pricing-table th:nth-child(6) { width: 10%; }
+      .cc-pricing-table th:nth-child(1) { width: 21%; }
+      .cc-pricing-table th:nth-child(2) { width: 27%; }
+      .cc-pricing-table th:nth-child(3) { width: 10%; }
+      .cc-pricing-table th:nth-child(4) { width: 9%; }
+      .cc-pricing-table th:nth-child(5) { width: 10%; }
+      .cc-pricing-table th:nth-child(6) { width: 11.5%; }
+      .cc-pricing-table th:nth-child(7) { width: 11.5%; }
     }
 
     @supports not (container-type: inline-size) {
@@ -370,12 +361,13 @@
           display: none;
         }
 
-        .cc-pricing-table th:nth-child(1) { width: 25%; }
-        .cc-pricing-table th:nth-child(2) { width: 30%; }
-        .cc-pricing-table th:nth-child(3) { width: 12%; }
-        .cc-pricing-table th:nth-child(4) { width: 10%; }
-        .cc-pricing-table th:nth-child(5) { width: 13%; }
-        .cc-pricing-table th:nth-child(6) { width: 10%; }
+        .cc-pricing-table th:nth-child(1) { width: 21%; }
+        .cc-pricing-table th:nth-child(2) { width: 27%; }
+        .cc-pricing-table th:nth-child(3) { width: 10%; }
+        .cc-pricing-table th:nth-child(4) { width: 9%; }
+        .cc-pricing-table th:nth-child(5) { width: 10%; }
+        .cc-pricing-table th:nth-child(6) { width: 11.5%; }
+        .cc-pricing-table th:nth-child(7) { width: 11.5%; }
       }
     }
 
@@ -404,7 +396,6 @@
         padding: 0 16px;
       }
     }
-    
   </style>
 </head>
 
@@ -420,36 +411,39 @@
       <strong>Нека обсъдим как можем да бъдем полезни на вашия екип.</strong>
     </p>
     <p class="cc-pricing-note">
-      <a target="_top" href="https://bg.courageouscoaches.com/%D0%B7%D0%B0-%D0%BD%D0%B0%D1%81/%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B8">Свържете се с нас</a>
+      <a target="_blank" href="https://bg.courageouscoaches.com/%D0%B7%D0%B0-%D0%BD%D0%B0%D1%81/%D0%BA%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B8">Свържете се с нас</a>
       или
-      <a target="_top" href="https://bg.courageouscoaches.com/%D0%B7%D0%B0%D0%BF%D0%B0%D0%B7%D0%B8-%D0%BE%D0%BF%D0%BE%D0%B7%D0%BD%D0%B0%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D0%BD%D0%B0-%D1%81%D1%80%D0%B5%D1%89%D0%B0">запазете опознавателна среща</a>.
+      <a target="_blank" href="https://bg.courageouscoaches.com/%D0%B7%D0%B0%D0%BF%D0%B0%D0%B7%D0%B8-%D0%BE%D0%BF%D0%BE%D0%B7%D0%BD%D0%B0%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D0%BD%D0%B0-%D1%81%D1%80%D0%B5%D1%89%D0%B0">запазете опознавателна среща</a>.
     </p>
 
     <!-- Coaching prices -->
-    <section class="cc-coaching-pricing" aria-labelledby="cc-coaching-heading">
-
+    <section class="cc-coaching-pricing" aria-label="Цени за коучинг">
       <div class="cc-coaching-grid">
         <section class="cc-coaching-card" aria-labelledby="cc-corporate-heading">
           <h3 id="cc-corporate-heading">Корпоративен коучинг</h3>
           <table class="cc-coaching-table">
             <thead>
               <tr>
-                <th scope="col" style="width: 68%;">Пакет</th>
-                <th scope="col">Цена*</th>
+                <th scope="col" style="width: 48%;">Пакет</th>
+                <th scope="col">Цена (без ДДС)</th>
+                <th scope="col">Цена (с ДДС)</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>1 опознавателна сесия + n единични коучинг сесии по 150 €</td>
                 <td class="cc-coaching-price">n × 150 €</td>
+                <td class="cc-coaching-price">n × 180 €</td>
               </tr>
               <tr>
                 <td>1 опознавателна сесия + 5 коучинг сесии по 130 €</td>
                 <td class="cc-coaching-price">650 €</td>
+                <td class="cc-coaching-price">780 €</td>
               </tr>
               <tr>
                 <td>1 опознавателна сесия + 10 коучинг сесии по 115 €</td>
                 <td class="cc-coaching-price">1 150 €</td>
+                <td class="cc-coaching-price">1 380 €</td>
               </tr>
             </tbody>
           </table>
@@ -460,22 +454,26 @@
           <table class="cc-coaching-table">
             <thead>
               <tr>
-                <th scope="col" style="width: 68%;">Пакет</th>
-                <th scope="col">Цена*</th>
+                <th scope="col" style="width: 48%;">Пакет</th>
+                <th scope="col">Цена (без ДДС)</th>
+                <th scope="col">Цена (с ДДС)</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>1 опознавателна сесия + n единични коучинг сесии по 75 €</td>
                 <td class="cc-coaching-price">n × 75 €</td>
+                <td class="cc-coaching-price">n × 90 €</td>
               </tr>
               <tr>
                 <td>1 опознавателна сесия + 5 коучинг сесии по 65 €</td>
                 <td class="cc-coaching-price">325 €</td>
+                <td class="cc-coaching-price">390 €</td>
               </tr>
               <tr>
                 <td>1 опознавателна сесия + 10 коучинг сесии по 55 €</td>
                 <td class="cc-coaching-price">550 €</td>
+                <td class="cc-coaching-price">660 €</td>
               </tr>
             </tbody>
           </table>
@@ -496,94 +494,37 @@
           <th scope="col" role="columnheader">Участници</th>
           <th scope="col" role="columnheader">Продължителност</th>
           <th scope="col" role="columnheader">Формат</th>
-          <th scope="col" role="columnheader">Цена за група*</th>
+          <th scope="col" role="columnheader">Цена за група (без ДДС)</th>
+          <th scope="col" role="columnheader">Цена за група (с ДДС)</th>
         </tr>
       </thead>
       <tbody>
-        <tr role="row">
-          <td role="cell"><span class="cc-title">Смелост в ерата на AI – как да водим себе си и другите през несигурността</span></td>
-          <td role="cell"><p class="cc-desc">Открийте практични инструменти за справяне с несигурността и подкрепа на себе си и другите в ерата на AI.</p></td>
+'''
+workshops = [
+("Смелост в ерата на AI – как да водим себе си и другите през несигурността", "Открийте практични инструменти за справяне с несигурността и подкрепа на себе си и другите в ерата на AI."),
+("Продуктивни, не просто заети", "Приоритизирайте важните задачи, подобрете фокуса си и намалете разпиляването за по-продуктивно ежедневие."),
+("Бъди собствения си лидер – инструменти за ежедневието", "Развийте умения за самоуправление чрез практични инструменти за фокус, справяне със стреса и устойчивост в ежедневието."),
+("Силата на слушането", "Практикувайте активно слушане за по-смислени разговори и по-добро разбиране на хората срещу вас."),
+("Коучинг умения за лидери", "Развийте самостоятелността и отговорността в екипа чрез активно слушане, силни въпроси и кратки коучинг разговори."),
+("Емоционална гъвкавост – пътят към устойчив растеж", "Научете се да работите с трудните емоции и да действате в съответствие с това, което е важно за вас."),
+("Когато чуеш „не“ – устойчивост при отказ и неуспех", "Разграничете неуспеха от собствената си стойност и изградете устойчивост, за да се върнете по-бързо към действие."),
+("Design Your Worklife – създай работа, която работи и за теб", "Използвайте принципите на дизайн мисленето, за да изследвате професионални възможности и да тествате малка промяна в работата си."),
+("Менторство или коучинг – кога кое работи?", "Научете кога да споделяте опит, кога да задавате коучинг въпроси и кога да комбинирате двата подхода."),
+("Скритата сила в мен – какво не виждам за себе си", "Изследвайте собствените реакции и „слепи петна“, за да развиете самоосъзнатост и да превърнете скритите качества в ресурс.")
+]
+for title, desc in workshops:
+    html += f'''        <tr role="row">
+          <td role="cell"><span class="cc-title">{title}</span></td>
+          <td role="cell"><p class="cc-desc">{desc}</p></td>
           <td role="cell"><span class="cc-cell-label" aria-hidden="true">Участници</span><span class="cc-badge">10–30 души</span></td>
           <td role="cell"><span class="cc-cell-label" aria-hidden="true">Продължителност</span><span class="cc-badge">90 мин.</span></td>
           <td role="cell"><span class="cc-cell-label" aria-hidden="true">Формат</span>Онлайн / на място</td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Цена за група*</span><span class="cc-price">480&nbsp;€</span></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Цена за група (без ДДС)</span><span class="cc-price">480&nbsp;€</span></td>
+          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Цена за група (с ДДС)</span><span class="cc-price">576&nbsp;€</span></td>
         </tr>
-        <tr role="row">
-          <td role="cell"><span class="cc-title">Продуктивни, не просто заети</span></td>
-          <td role="cell"><p class="cc-desc">Приоритизирайте важните задачи, подобрете фокуса си и намалете разпиляването за по-продуктивно ежедневие.</p></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Участници</span><span class="cc-badge">10–30 души</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Продължителност</span><span class="cc-badge">90 мин.</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Формат</span>Онлайн / на място</td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Цена за група*</span><span class="cc-price">480&nbsp;€</span></td>
-        </tr>
-        <tr role="row">
-          <td role="cell"><span class="cc-title">Бъди собствения си лидер – инструменти за ежедневието</span></td>
-          <td role="cell"><p class="cc-desc">Развийте умения за самоуправление чрез практични инструменти за фокус, справяне със стреса и устойчивост в ежедневието.</p></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Участници</span><span class="cc-badge">10–30 души</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Продължителност</span><span class="cc-badge">90 мин.</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Формат</span>Онлайн / на място</td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Цена за група*</span><span class="cc-price">480&nbsp;€</span></td>
-        </tr>
-        <tr role="row">
-          <td role="cell"><span class="cc-title">Силата на слушането</span></td>
-          <td role="cell"><p class="cc-desc">Практикувайте активно слушане за по-смислени разговори и по-добро разбиране на хората срещу вас.</p></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Участници</span><span class="cc-badge">10–30 души</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Продължителност</span><span class="cc-badge">90 мин.</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Формат</span>Онлайн / на място</td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Цена за група*</span><span class="cc-price">480&nbsp;€</span></td>
-        </tr>
-        <tr role="row">
-          <td role="cell"><span class="cc-title">Коучинг умения за лидери</span></td>
-          <td role="cell"><p class="cc-desc">Развийте самостоятелността и отговорността в екипа чрез активно слушане, силни въпроси и кратки коучинг разговори.</p></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Участници</span><span class="cc-badge">10–30 души</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Продължителност</span><span class="cc-badge">90 мин.</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Формат</span>Онлайн / на място</td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Цена за група*</span><span class="cc-price">480&nbsp;€</span></td>
-        </tr>
-        <tr role="row">
-          <td role="cell"><span class="cc-title">Емоционална гъвкавост – пътят към устойчив растеж</span></td>
-          <td role="cell"><p class="cc-desc">Научете се да работите с трудните емоции и да действате в съответствие с това, което е важно за вас.</p></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Участници</span><span class="cc-badge">10–30 души</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Продължителност</span><span class="cc-badge">90 мин.</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Формат</span>Онлайн / на място</td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Цена за група*</span><span class="cc-price">480&nbsp;€</span></td>
-        </tr>
-        <tr role="row">
-          <td role="cell"><span class="cc-title">Когато чуеш „не“ – устойчивост при отказ и неуспех</span></td>
-          <td role="cell"><p class="cc-desc">Разграничете неуспеха от собствената си стойност и изградете устойчивост, за да се върнете по-бързо към действие.</p></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Участници</span><span class="cc-badge">10–30 души</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Продължителност</span><span class="cc-badge">90 мин.</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Формат</span>Онлайн / на място</td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Цена за група*</span><span class="cc-price">480&nbsp;€</span></td>
-        </tr>
-        <tr role="row">
-          <td role="cell"><span class="cc-title">Design Your Worklife – създай работа, която работи и за теб</span></td>
-          <td role="cell"><p class="cc-desc">Използвайте принципите на дизайн мисленето, за да изследвате професионални възможности и да тествате малка промяна в работата си.</p></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Участници</span><span class="cc-badge">10–30 души</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Продължителност</span><span class="cc-badge">90 мин.</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Формат</span>Онлайн / на място</td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Цена за група*</span><span class="cc-price">480&nbsp;€</span></td>
-        </tr>
-        <tr role="row">
-          <td role="cell"><span class="cc-title">Менторство или коучинг – кога кое работи?</span></td>
-          <td role="cell"><p class="cc-desc">Научете кога да споделяте опит, кога да задавате коучинг въпроси и кога да комбинирате двата подхода.</p></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Участници</span><span class="cc-badge">10–30 души</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Продължителност</span><span class="cc-badge">90 мин.</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Формат</span>Онлайн / на място</td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Цена за група*</span><span class="cc-price">480&nbsp;€</span></td>
-        </tr>
-        <tr role="row">
-          <td role="cell"><span class="cc-title">Скритата сила в мен – какво не виждам за себе си</span></td>
-          <td role="cell"><p class="cc-desc">Изследвайте собствените реакции и „слепи петна“, за да развиете самоосъзнатост и да превърнете скритите качества в ресурс.</p></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Участници</span><span class="cc-badge">10–30 души</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Продължителност</span><span class="cc-badge">90 мин.</span></td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Формат</span>Онлайн / на място</td>
-          <td role="cell"><span class="cc-cell-label" aria-hidden="true">Цена за група*</span><span class="cc-price">480&nbsp;€</span></td>
-        </tr>
-      </tbody>
+'''
+html += '''      </tbody>
     </table>
-
-    <p class="cc-pricing-note" style="margin-top: 0.75rem;">* Всички посочени цени са без ДДС.</p>
   </div>
 </body>
 </html>
