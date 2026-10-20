@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Coaching &amp; Workshops | Courageous Coaches</title>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&amp;family=Montserrat:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <style>
+    body {
+      margin: 0;
+    }
     .cc-pricing-wrapper {
       --cc-font-body: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
       --cc-font-title: clamp(1rem, 0.92rem + 0.45vw, 1.125rem);
@@ -18,22 +19,21 @@
       --cc-font-price: clamp(1.125rem, 1rem + 0.4vw, 1.375rem);
       --cc-cell-padding: clamp(0.75rem, 0.55rem + 0.35vw, 1rem);
       --cc-card-gap: clamp(0.75rem, 0.5rem + 0.75vw, 1.25rem);
-
-      font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: "Montserrat", system-ui, "Segoe UI", Roboto, Arial, sans-serif;
       color: #1C1C1C;
       width: 100%;
       max-width: 1100px;
       min-width: 0;
       margin: 0 auto;
-      padding: 0 32px;
+      padding: 24px 32px 0;
       box-sizing: border-box;
       container-type: inline-size;
       container-name: cc-pricing;
     }
-
     .cc-pricing-wrapper,
-    .cc-pricing-wrapper * { box-sizing: border-box; }
-
+    .cc-pricing-wrapper * {
+      box-sizing: border-box;
+    }
     @supports (font-size: 1cqi) {
       .cc-pricing-wrapper {
         --cc-font-body: clamp(0.875rem, 0.8rem + 0.25cqi, 1rem);
@@ -45,27 +45,39 @@
         --cc-card-gap: clamp(0.75rem, 0.5rem + 0.75cqi, 1.25rem);
       }
     }
-
     .cc-pricing-note {
       margin: 0 0 0.75em;
       font-size: var(--cc-font-body);
       color: rgba(28, 28, 28, 0.82);
       line-height: 1.5;
     }
-
+    .cc-pricing-note a {
+      color: #0B9ED3;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .cc-pricing-note a:hover {
+      color: #087CA6;
+    }
+    .cc-pricing-note a:focus-visible {
+      outline: 2px solid #0B9ED3;
+      outline-offset: 2px;
+    }
     /* Coaching pricing sections */
     .cc-coaching-pricing {
       margin: 1.5rem 0 2rem;
       font-family: inherit;
       color: #1C1C1C;
     }
-
     .cc-coaching-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: var(--cc-card-gap);
     }
-
+    .cc-coaching-grid + .cc-pricing-note {
+      margin-top: 1rem;
+    }
     .cc-coaching-card {
       min-width: 0;
       overflow: hidden;
@@ -74,7 +86,6 @@
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(28, 28, 28, 0.05);
     }
-
     .cc-coaching-card h3 {
       margin: 0;
       padding: var(--cc-cell-padding);
@@ -84,7 +95,6 @@
       font-weight: 600;
       line-height: 1.4;
     }
-
     .cc-coaching-table {
       display: block;
       width: 100%;
@@ -96,7 +106,6 @@
       font-size: var(--cc-font-body);
       line-height: 1.5;
     }
-
     .cc-coaching-table thead {
       position: absolute;
       width: 1px;
@@ -107,13 +116,11 @@
       clip-path: inset(50%);
       white-space: nowrap;
     }
-
     .cc-coaching-table tbody {
       display: grid;
       grid-template-columns: minmax(0, 1fr);
       gap: var(--cc-card-gap);
     }
-
     .cc-coaching-table tr {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -123,7 +130,6 @@
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(28, 28, 28, 0.05);
     }
-
     .cc-coaching-table th,
     .cc-coaching-table td {
       min-width: 0;
@@ -132,23 +138,28 @@
       overflow-wrap: anywhere;
       vertical-align: middle;
     }
-
     .cc-coaching-table th {
       background-color: #EBF7FB;
       color: rgba(28, 28, 28, 0.82);
       font-weight: 600;
       line-height: 1.35;
     }
-
-    .cc-coaching-table td { display: block; }
-    .cc-coaching-table td:first-child { grid-column: 1 / -1; }
-    .cc-coaching-table tbody tr:nth-child(even) { background-color: #F9F9F9; }
-
+    .cc-coaching-table th:nth-child(1) { width: 52%; }
+    .cc-coaching-table th:nth-child(2) { width: 24%; }
+    .cc-coaching-table th:nth-child(3) { width: 24%; }
+    .cc-coaching-table td {
+      display: block;
+    }
+    .cc-coaching-table td:first-child {
+      grid-column: 1 / -1;
+    }
+    .cc-coaching-table tbody tr:nth-child(even) {
+      background-color: #F9F9F9;
+    }
     .cc-coaching-price {
       color: #E91E63;
       font-weight: 700;
     }
-
     .cc-coaching-table .cc-cell-label {
       display: block;
       margin-bottom: 0.35em;
@@ -157,14 +168,7 @@
       color: rgba(28, 28, 28, 0.82);
       line-height: 1.35;
     }
-
-    .cc-coaching-note {
-      margin: 0.75rem 0 0;
-      color: rgba(28, 28, 28, 0.82);
-      font-size: var(--cc-font-label);
-      line-height: 1.5;
-    }
-
+    /* Workshop pricing table */
     .cc-pricing-table {
       display: block;
       width: 100%;
@@ -176,7 +180,6 @@
       font-size: var(--cc-font-body);
       line-height: 1.5;
     }
-
     .cc-pricing-table thead {
       position: absolute;
       width: 1px;
@@ -187,13 +190,11 @@
       clip-path: inset(50%);
       white-space: nowrap;
     }
-
     .cc-pricing-table tbody {
       display: grid;
       grid-template-columns: minmax(0, 1fr);
       gap: var(--cc-card-gap);
     }
-
     .cc-pricing-table tr {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -203,7 +204,6 @@
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(28, 28, 28, 0.05);
     }
-
     .cc-pricing-table th,
     .cc-pricing-table td {
       min-width: 0;
@@ -212,7 +212,6 @@
       overflow-wrap: anywhere;
       vertical-align: middle;
     }
-
     .cc-pricing-table th {
       background-color: #0B9ED3;
       color: #FFFFFF;
@@ -220,11 +219,15 @@
       line-height: 1.35;
       letter-spacing: 0.02em;
     }
-
-    .cc-pricing-table td { display: block; }
-    .cc-pricing-table td:nth-child(-n + 2) { grid-column: 1 / -1; }
-    .cc-pricing-table tbody tr:nth-child(even) { background-color: #F9F9F9; }
-
+    .cc-pricing-table td {
+      display: block;
+    }
+    .cc-pricing-table td:nth-child(-n + 2) {
+      grid-column: 1 / -1;
+    }
+    .cc-pricing-table tbody tr:nth-child(even) {
+      background-color: #F9F9F9;
+    }
     .cc-cell-label {
       display: block;
       margin-bottom: 0.35em;
@@ -233,7 +236,6 @@
       color: rgba(28, 28, 28, 0.82);
       line-height: 1.35;
     }
-
     .cc-title {
       display: block;
       margin: 0;
@@ -242,14 +244,12 @@
       font-weight: 700;
       line-height: 1.4;
     }
-
     .cc-desc {
       margin: 0;
       color: rgba(28, 28, 28, 0.82);
       font-size: var(--cc-font-description);
       line-height: 1.5;
     }
-
     .cc-badge {
       display: inline-block;
       max-width: 100%;
@@ -260,23 +260,145 @@
       font-size: inherit;
       font-weight: 500;
     }
-
     .cc-price {
       color: #E91E63;
       font-size: var(--cc-font-price);
       font-weight: 700;
       white-space: nowrap;
     }
-
+    /* Inquiry Form Section - matched to Courageous Coaches card style */
+    .form-section {
+      margin: 2rem 0 0;
+      background: #FFFFFF;
+      border: 1px solid rgba(28, 28, 28, 0.12);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(28, 28, 28, 0.05);
+      overflow: hidden;
+      font-family: inherit;
+      color: #1C1C1C;
+    }
+    .form-section h3 {
+      margin: 0;
+      padding: var(--cc-cell-padding);
+      background: #0B9ED3;
+      color: #FFFFFF;
+      font-size: var(--cc-font-title);
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    .form-section__body {
+      padding: clamp(1rem, 0.8rem + 0.8vw, 1.5rem);
+    }
+    .form-section__intro {
+      margin: 0 0 1.25rem;
+      color: rgba(28, 28, 28, 0.82);
+      font-size: var(--cc-font-body);
+      line-height: 1.5;
+    }
+    .cc-hidden-iframe {
+      display: none;
+      width: 0;
+      height: 0;
+      border: 0;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--cc-card-gap);
+      margin-bottom: var(--cc-card-gap);
+    }
+    .form-group {
+      margin-bottom: 0;
+    }
+    .form-group--full {
+      grid-column: 1 / -1;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.4em;
+      font-size: var(--cc-font-label);
+      font-weight: 600;
+      color: rgba(28, 28, 28, 0.88);
+      line-height: 1.35;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.65rem 0.85rem;
+      border: 1px solid rgba(28, 28, 28, 0.22);
+      border-radius: 6px;
+      background-color: #F9F9F9;
+      color: #1C1C1C;
+      font-family: inherit;
+      font-size: var(--cc-font-body);
+      line-height: 1.5;
+      transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(28, 28, 28, 0.45);
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      background-color: #FFFFFF;
+      border-color: #0B9ED3;
+      box-shadow: 0 0 0 3px rgba(11, 158, 211, 0.18);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+    .btn-submit {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0.65rem 1.5rem;
+      border: 1px solid #E91E63;
+      border-radius: 6px;
+      background-color: #E91E63;
+      color: #FFFFFF;
+      font-family: inherit;
+      font-size: var(--cc-font-body);
+      font-weight: 600;
+      line-height: 1.35;
+      cursor: pointer;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+    .btn-submit:hover {
+      background-color: #C2185B;
+      border-color: #C2185B;
+    }
+    .btn-submit:focus-visible {
+      outline: 3px solid #1C1C1C;
+      outline-offset: 3px;
+    }
+    #confirmationMessage {
+      display: none;
+      padding: var(--cc-cell-padding);
+      background-color: #EBF7FB;
+      border: 1px solid #0B9ED3;
+      color: #1C1C1C;
+      border-radius: 6px;
+      font-size: var(--cc-font-body);
+      font-weight: 600;
+      line-height: 1.5;
+      margin-top: 1rem;
+    }
     @media (hover: hover) and (pointer: fine) {
-      .cc-pricing-table tbody tr { transition: background-color 0.2s ease; }
-      .cc-pricing-table tbody tr:hover { background-color: #EBF7FB; }
+      .cc-pricing-table tbody tr {
+        transition: background-color 0.2s ease;
+      }
+      .cc-pricing-table tbody tr:hover {
+        background-color: #EBF7FB;
+      }
     }
-
     @container cc-pricing (min-width: 40rem) {
-      .cc-pricing-table tbody { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .cc-pricing-table tbody {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
-
     @container cc-pricing (min-width: 60rem) {
       .cc-pricing-table {
         display: table;
@@ -286,7 +408,6 @@
         box-shadow: 0 4px 10px rgba(28, 28, 28, 0.05);
         overflow: hidden;
       }
-
       .cc-pricing-table thead {
         position: static;
         width: auto;
@@ -297,22 +418,25 @@
         white-space: normal;
         display: table-header-group;
       }
-
-      .cc-pricing-table tbody { display: table-row-group; }
+      .cc-pricing-table tbody {
+        display: table-row-group;
+      }
       .cc-pricing-table tr {
         display: table-row;
         border: 0;
         border-radius: 0;
         box-shadow: none;
       }
-
       .cc-pricing-table td {
         display: table-cell;
         border-bottom: 1px solid rgba(28, 28, 28, 0.12);
       }
-
-      .cc-pricing-table tr:last-child td { border-bottom: 0; }
-      .cc-cell-label { display: none; }
+      .cc-pricing-table tr:last-child td {
+        border-bottom: 0;
+      }
+      .cc-cell-label {
+        display: none;
+      }
       .cc-pricing-table th:nth-child(1) { width: 22%; }
       .cc-pricing-table th:nth-child(2) { width: 26%; }
       .cc-pricing-table th:nth-child(3) { width: 11%; }
@@ -321,12 +445,12 @@
       .cc-pricing-table th:nth-child(6) { width: 11%; }
       .cc-pricing-table th:nth-child(7) { width: 11%; }
     }
-
     @supports not (container-type: inline-size) {
       @media (min-width: 40rem) {
-        .cc-pricing-table tbody { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .cc-pricing-table tbody {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
       }
-
       @media (min-width: 60rem) {
         .cc-pricing-table {
           display: table;
@@ -336,7 +460,6 @@
           box-shadow: 0 4px 10px rgba(28, 28, 28, 0.05);
           overflow: hidden;
         }
-
         .cc-pricing-table thead {
           position: static;
           width: auto;
@@ -347,22 +470,25 @@
           white-space: normal;
           display: table-header-group;
         }
-
-        .cc-pricing-table tbody { display: table-row-group; }
+        .cc-pricing-table tbody {
+          display: table-row-group;
+        }
         .cc-pricing-table tr {
           display: table-row;
           border: 0;
           border-radius: 0;
           box-shadow: none;
         }
-
         .cc-pricing-table td {
           display: table-cell;
           border-bottom: 1px solid rgba(28, 28, 28, 0.12);
         }
-
-        .cc-pricing-table tr:last-child td { border-bottom: 0; }
-        .cc-cell-label { display: none; }
+        .cc-pricing-table tr:last-child td {
+          border-bottom: 0;
+        }
+        .cc-cell-label {
+          display: none;
+        }
         .cc-pricing-table th:nth-child(1) { width: 22%; }
         .cc-pricing-table th:nth-child(2) { width: 26%; }
         .cc-pricing-table th:nth-child(3) { width: 11%; }
@@ -372,8 +498,6 @@
         .cc-pricing-table th:nth-child(7) { width: 11%; }
       }
     }
-
-
     @container cc-pricing (min-width: 60rem) {
       .cc-coaching-table {
         display: table;
@@ -382,7 +506,6 @@
         border-radius: 0 0 10px 10px;
         overflow: hidden;
       }
-
       .cc-coaching-table thead {
         position: static;
         width: auto;
@@ -393,24 +516,26 @@
         white-space: normal;
         display: table-header-group;
       }
-
-      .cc-coaching-table tbody { display: table-row-group; }
+      .cc-coaching-table tbody {
+        display: table-row-group;
+      }
       .cc-coaching-table tr {
         display: table-row;
         border: 0;
         border-radius: 0;
         box-shadow: none;
       }
-
       .cc-coaching-table td {
         display: table-cell;
         border-bottom: 1px solid rgba(28, 28, 28, 0.12);
       }
-
-      .cc-coaching-table tr:last-child td { border-bottom: 0; }
-      .cc-coaching-table .cc-cell-label { display: none; }
+      .cc-coaching-table tr:last-child td {
+        border-bottom: 0;
+      }
+      .cc-coaching-table .cc-cell-label {
+        display: none;
+      }
     }
-
     @supports not (container-type: inline-size) {
       @media (min-width: 60rem) {
         .cc-coaching-table {
@@ -420,7 +545,6 @@
           border-radius: 0 0 10px 10px;
           overflow: hidden;
         }
-
         .cc-coaching-table thead {
           position: static;
           width: auto;
@@ -431,205 +555,190 @@
           white-space: normal;
           display: table-header-group;
         }
-
-        .cc-coaching-table tbody { display: table-row-group; }
+        .cc-coaching-table tbody {
+          display: table-row-group;
+        }
         .cc-coaching-table tr {
           display: table-row;
           border: 0;
           border-radius: 0;
           box-shadow: none;
         }
-
         .cc-coaching-table td {
           display: table-cell;
           border-bottom: 1px solid rgba(28, 28, 28, 0.12);
         }
-
-        .cc-coaching-table tr:last-child td { border-bottom: 0; }
-        .cc-coaching-table .cc-cell-label { display: none; }
+        .cc-coaching-table tr:last-child td {
+          border-bottom: 0;
+        }
+        .cc-coaching-table .cc-cell-label {
+          display: none;
+        }
       }
     }
-
     @container cc-pricing (max-width: 39.99rem) {
-      .cc-coaching-grid { grid-template-columns: minmax(0, 1fr); }
+      .cc-coaching-grid,
+      .form-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
     }
-
     @supports not (container-type: inline-size) {
       @media (max-width: 639px) {
-        .cc-coaching-grid { grid-template-columns: minmax(0, 1fr); }
+        .cc-coaching-grid,
+        .form-grid {
+          grid-template-columns: minmax(0, 1fr);
+        }
       }
     }
-
     @media (prefers-reduced-motion: reduce) {
-      .cc-pricing-table tbody tr { transition: none; }
+      .cc-pricing-table tbody tr,
+      .form-group input,
+      .form-group textarea,
+      .btn-submit {
+        transition: none;
+      }
     }
-
     @media (max-width: 600px) {
-      .cc-pricing-wrapper { padding: 0 16px; }
+      .cc-pricing-wrapper {
+        padding: 16px 16px 0;
+      }
     }
-  </style>
-  <!-- Embedded-page footer: allow its background to reach the frame edges. -->
-  <style>
-    body { margin: 0; }
-  </style>
-  <style>
-@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Montserrat:wght@400;500&display=swap");
-
-/* All footer rules are scoped so they do not restyle the pricing tables. */
-.cc-page-footer,
-.cc-page-footer * {
-  box-sizing: border-box;
-}
-
-.cc-page-footer {
-  --cc-footer-blue: #0b9ed3;
-  --cc-footer-pink: #e91e63;
-  position: static;
-  display: block;
-  clear: both;
-  width: 100%;
-  min-width: 0;
-  margin: 24px 0 0;
-  padding: 0;
-  color: #fff;
-  background: var(--cc-footer-blue);
-  text-align: center;
-  font-family: "Montserrat", Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.5;
-}
-
-.cc-page-footer a {
-  text-decoration: none;
-}
-
-.cc-page-footer a:focus-visible {
-  outline: 3px solid #1c1c1c;
-  outline-offset: 4px;
-}
-
-.cc-page-footer__newsletter {
-  padding: 16px;
-  background: #fff;
-}
-
-.cc-page-footer__newsletter-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 380px;
-  max-width: 100%;
-  min-height: 36px;
-  padding: 7px 12px;
-  border: 1px solid var(--cc-footer-blue);
-  border-radius: 4px;
-  color: var(--cc-footer-blue);
-  background: #fff;
-  font: inherit;
-  line-height: 20px;
-  overflow-wrap: anywhere;
-}
-
-.cc-page-footer__content {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 22px 16px 32px;
-}
-
-.cc-page-footer__social {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.cc-page-footer__social li {
-  margin: 0;
-  padding: 0;
-}
-
-.cc-page-footer__social a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 5px;
-}
-
-.cc-page-footer__social img {
-  display: block;
-  width: 40px;
-  height: 40px;
-  border: 0;
-}
-
-.cc-page-footer__message {
-  margin: 18px 0 12px;
-  color: #fff;
-  font-family: "Comfortaa", "Montserrat", Arial, sans-serif;
-  font-size: clamp(16px, 1.6vw, 18.6667px);
-  font-weight: 700;
-  line-height: 1.38;
-}
-
-.cc-page-footer__message span {
-  display: block;
-}
-
-.cc-page-footer__message span + span {
-  margin-top: 9px;
-}
-
-.cc-page-footer__booking {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 100%;
-  min-height: 36px;
-  padding: 7px 12px;
-  border: 1px solid var(--cc-footer-pink);
-  border-radius: 4px;
-  color: #f9f9f9;
-  background: var(--cc-footer-pink);
-  font: inherit;
-  line-height: 20px;
-}
-
-.cc-page-footer__logo {
-  display: block;
-  width: 380px;
-  max-width: 100%;
-  height: auto;
-  margin: 40px auto 30px;
-  border: 0;
-}
-
-.cc-page-footer__copyright,
-.cc-page-footer__legal {
-  margin: 0;
-  color: #fff;
-  font-size: 10.6667px;
-  line-height: 1.5;
-}
-
-.cc-page-footer__legal {
-  margin-top: 6px;
-}
-
-.cc-page-footer__legal a {
-  color: #fff;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
+    /* All footer rules are scoped so they do not restyle the pricing tables. */
+    .cc-page-footer,
+    .cc-page-footer * {
+      box-sizing: border-box;
+    }
+    .cc-page-footer {
+      --cc-footer-blue: #0b9ed3;
+      --cc-footer-pink: #e91e63;
+      position: static;
+      display: block;
+      clear: both;
+      width: 100%;
+      min-width: 0;
+      margin: 32px 0 0;
+      padding: 0;
+      color: #fff;
+      background: var(--cc-footer-blue);
+      text-align: center;
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+    .cc-page-footer a {
+      text-decoration: none;
+    }
+    .cc-page-footer a:focus-visible {
+      outline: 3px solid #1c1c1c;
+      outline-offset: 4px;
+    }
+    .cc-page-footer__newsletter {
+      padding: 16px;
+      background: #fff;
+    }
+    .cc-page-footer__newsletter-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 380px;
+      max-width: 100%;
+      min-height: 36px;
+      padding: 7px 12px;
+      border: 1px solid var(--cc-footer-blue);
+      border-radius: 4px;
+      color: var(--cc-footer-blue);
+      background: #fff;
+      font: inherit;
+      line-height: 20px;
+      overflow-wrap: anywhere;
+    }
+    .cc-page-footer__content {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 22px 16px 32px;
+    }
+    .cc-page-footer__social {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .cc-page-footer__social li {
+      margin: 0;
+      padding: 0;
+    }
+    .cc-page-footer__social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 5px;
+    }
+    .cc-page-footer__social img {
+      display: block;
+      width: 40px;
+      height: 40px;
+      border: 0;
+    }
+    .cc-page-footer__message {
+      margin: 18px 0 12px;
+      color: #fff;
+      font-family: "Comfortaa", "Montserrat", Arial, sans-serif;
+      font-size: clamp(16px, 1.6vw, 18.6667px);
+      font-weight: 700;
+      line-height: 1.38;
+    }
+    .cc-page-footer__message span {
+      display: block;
+    }
+    .cc-page-footer__message span + span {
+      margin-top: 9px;
+    }
+    .cc-page-footer__booking {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 100%;
+      min-height: 36px;
+      padding: 7px 12px;
+      border: 1px solid var(--cc-footer-pink);
+      border-radius: 4px;
+      color: #f9f9f9;
+      background: var(--cc-footer-pink);
+      font: inherit;
+      line-height: 20px;
+    }
+    .cc-page-footer__logo {
+      display: block;
+      width: 380px;
+      max-width: 100%;
+      height: auto;
+      margin: 40px auto 30px;
+      border: 0;
+    }
+    .cc-page-footer__copyright,
+    .cc-page-footer__legal {
+      margin: 0;
+      color: #fff;
+      font-size: 10.6667px;
+      line-height: 1.5;
+    }
+    .cc-page-footer__legal {
+      margin-top: 6px;
+    }
+    .cc-page-footer__legal a {
+      color: #fff;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
   </style>
 </head>
-
 <body>
   <div class="cc-pricing-wrapper">
     <p class="cc-pricing-note">
@@ -648,16 +757,16 @@
     </p>
 
     <!-- Coaching prices -->
-    <section class="cc-coaching-pricing" aria-label="Coaching prices">
+    <div class="cc-coaching-pricing" role="region" aria-label="Coaching prices">
       <div class="cc-coaching-grid">
         <section class="cc-coaching-card" aria-labelledby="cc-corporate-heading">
           <h3 id="cc-corporate-heading">Corporate Coaching</h3>
           <table class="cc-coaching-table">
             <thead>
               <tr>
-                <th scope="col" style="width: 52%;">Coaching option</th>
-                <th scope="col" style="width: 24%;">Price (excl. VAT)</th>
-                <th scope="col" style="width: 24%;">Price (incl. VAT)</th>
+                <th scope="col">Coaching option</th>
+                <th scope="col">Price (excl. VAT)</th>
+                <th scope="col">Price (incl. VAT)</th>
               </tr>
             </thead>
             <tbody>
@@ -679,15 +788,14 @@
             </tbody>
           </table>
         </section>
-
         <section class="cc-coaching-card" aria-labelledby="cc-individual-heading">
           <h3 id="cc-individual-heading">Individual Coaching</h3>
           <table class="cc-coaching-table">
             <thead>
               <tr>
-                <th scope="col" style="width: 52%;">Coaching option</th>
-                <th scope="col" style="width: 24%;">Price (excl. VAT)</th>
-                <th scope="col" style="width: 24%;">Price (incl. VAT)</th>
+                <th scope="col">Coaching option</th>
+                <th scope="col">Price (excl. VAT)</th>
+                <th scope="col">Price (incl. VAT)</th>
               </tr>
             </thead>
             <tbody>
@@ -697,7 +805,7 @@
                 <td class="cc-coaching-price"><span class="cc-cell-label">Price (incl. VAT)</span>€90</td>
               </tr>
               <tr>
-                <td>Package of 5 coaching sessions at €65 each </td>
+                <td>Package of 5 coaching sessions at €65 each</td>
                 <td class="cc-coaching-price"><span class="cc-cell-label">Price (excl. VAT)</span>€325</td>
                 <td class="cc-coaching-price"><span class="cc-cell-label">Price (incl. VAT)</span>€390</td>
               </tr>
@@ -710,9 +818,8 @@
           </table>
         </section>
       </div>
-      <p/>
       <p class="cc-pricing-note">Before we begin working together, you can take advantage of a free introductory session. Explore <a href="https://www.courageouscoaches.com/about-us/our-coaches" target="_blank" rel="noopener noreferrer">our coaches</a> and book a discovery call.</p>
-    </section>
+    </div>
 
     <!-- Workshop prices -->
     <table class="cc-pricing-table" aria-label="Courageous Coaches workshops and pricing">
@@ -820,6 +927,79 @@
         </tr>
       </tbody>
     </table>
+
+    <!-- Google Forms Inquiry Form -->
+    <section class="form-section" aria-labelledby="cc-form-heading">
+      <h3 id="cc-form-heading">Request a Custom Proposal or Notification</h3>
+      <div class="form-section__body">
+        <p class="form-section__intro">Have questions about group workshops or corporate programs? Send us an inquiry below:</p>
+        <iframe
+          name="gform_redirect_frame"
+          id="gform_redirect_frame"
+          class="cc-hidden-iframe"
+          title="Form submission target"
+          aria-hidden="true"
+          tabindex="-1">
+        </iframe>
+        <form
+          id="googleInquiryForm"
+          action="https://docs.google.com/forms/d/e/1FAIpQLSdQvpLkYCDpfn65qRyKPofKUj39vMjkZtdloh5NkWT_CaLthg/formResponse"
+          method="POST"
+          target="gform_redirect_frame">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="entry_name">Your Name *</label>
+              <input
+                type="text"
+                id="entry_name"
+                name="entry.1418512623"
+                required
+                placeholder="Jane Doe">
+            </div>
+            <div class="form-group">
+              <label for="entry_email">Your Email Address *</label>
+              <input
+                type="email"
+                id="entry_email"
+                name="entry.1152484467"
+                required
+                placeholder="jane@example.com">
+            </div>
+            <div class="form-group">
+              <label for="entry_interest">Program of Interest</label>
+              <input
+                type="text"
+                id="entry_interest"
+                name="entry.296674877"
+                placeholder="e.g. AI Workshop, Corporate Coaching">
+            </div>
+            <div class="form-group">
+              <label for="entry_discount">Discount / Referral Code (Optional)</label>
+              <input
+                type="text"
+                id="entry_discount"
+                name="entry.162325543"
+                placeholder="e.g. EARLYBIRD10">
+            </div>
+            <div class="form-group form-group--full">
+              <label for="entry_message">Message / Organisation Needs *</label>
+              <textarea
+                id="entry_message"
+                name="entry.1045561131"
+                rows="4"
+                required
+                placeholder="Tell us about your team size, timing, or coaching goals..."></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn-submit" id="submitBtn">
+            Send Inquiry
+          </button>
+        </form>
+        <div id="confirmationMessage" role="status" aria-live="polite">
+          Thank you! Your inquiry has been submitted. We will get back to you shortly.
+        </div>
+      </div>
+    </section>
   </div>
 
 <!-- The footer stays in normal document flow, inside the embedded HTML page. -->
