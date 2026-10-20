@@ -510,28 +510,6 @@
   outline-offset: 4px;
 }
 
-.cc-page-footer__newsletter {
-  padding: 16px;
-  background: #fff;
-}
-
-.cc-page-footer__newsletter-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 380px;
-  max-width: 100%;
-  min-height: 36px;
-  padding: 7px 12px;
-  border: 1px solid var(--cc-footer-blue);
-  border-radius: 4px;
-  color: var(--cc-footer-blue);
-  background: #fff;
-  font: inherit;
-  line-height: 20px;
-  overflow-wrap: anywhere;
-}
-
 .cc-page-footer__content {
   width: 100%;
   max-width: 1100px;
@@ -629,6 +607,17 @@
   text-underline-offset: 2px;
 }
 
+@media (hover: hover) {
+  .cc-page-footer__booking:hover {
+    background: #cf1454;
+    border-color: #cf1454;
+  }
+  .cc-page-footer__social a:hover {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+}
+
 .cc-page-footer__home {
   display: block;
   width: 380px;
@@ -636,6 +625,118 @@
   margin: 40px auto 30px;
 }
   </style>
+<style>
+
+/* Bulgarian inquiry form: matched to the existing Courageous Coaches design. */
+.cc-pricing-wrapper .cc-inquiry,
+.cc-pricing-wrapper .cc-inquiry * { box-sizing: border-box; }
+.cc-pricing-wrapper .cc-inquiry {
+  margin: clamp(28px, 3.5vw, 44px) 0 32px;
+  overflow: hidden;
+  border: 1px solid rgba(28, 28, 28, .12);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(28, 28, 28, .05);
+  color: #1C1C1C;
+  font-family: inherit;
+  font-size: var(--cc-font-body);
+  line-height: 1.5;
+}
+.cc-pricing-wrapper .cc-inquiry h3 {
+  margin: 0;
+  padding: clamp(16px, 2.2vw, 22px);
+  background: #0B9ED3;
+  color: #fff;
+  font-size: clamp(1.05rem, 0.95rem + .4vw, 1.2rem);
+  font-weight: 600;
+  line-height: 1.4;
+}
+.cc-pricing-wrapper .cc-inquiry > p {
+  margin: 0;
+  padding: 20px clamp(16px, 2.2vw, 24px) 4px;
+  color: rgba(28, 28, 28, .82);
+}
+.cc-pricing-wrapper #googleInquiryForm {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 20px;
+  padding: 20px clamp(16px, 2.2vw, 24px) 24px;
+}
+.cc-pricing-wrapper .cc-inquiry__group { min-width: 0; }
+.cc-pricing-wrapper .cc-inquiry__group:nth-of-type(5) { grid-column: 1 / -1; }
+.cc-pricing-wrapper .cc-inquiry__group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: var(--cc-font-label);
+  font-weight: 600;
+  line-height: 1.45;
+  color: #1C1C1C;
+}
+.cc-pricing-wrapper .cc-inquiry__group input,
+.cc-pricing-wrapper .cc-inquiry__group textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #c9d9e1;
+  border-radius: 6px;
+  padding: 11px 13px;
+  background: #fff;
+  color: #1C1C1C;
+  font: inherit;
+  font-size: var(--cc-font-body);
+  line-height: 1.5;
+}
+.cc-pricing-wrapper .cc-inquiry__group textarea { min-height: 120px; resize: vertical; }
+.cc-pricing-wrapper .cc-inquiry__group input:focus,
+.cc-pricing-wrapper .cc-inquiry__group textarea:focus {
+  outline: 2px solid #0B9ED3;
+  outline-offset: 2px;
+  border-color: #0B9ED3;
+}
+.cc-pricing-wrapper .cc-inquiry__submit {
+  grid-column: 1 / -1;
+  justify-self: start;
+  min-height: 44px;
+  padding: 11px 24px;
+  border: 1px solid #E91E63;
+  border-radius: 5px;
+  background: #E91E63;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  line-height: 1.45;
+  cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease;
+}
+.cc-pricing-wrapper .cc-inquiry__submit:hover {
+  background: #cf1454;
+  border-color: #cf1454;
+}
+.cc-pricing-wrapper .cc-inquiry__submit:focus-visible { outline: 3px solid #0B9ED3; outline-offset: 3px; }
+.cc-pricing-wrapper #confirmationMessage {
+  display: none;
+  margin: 0 clamp(16px, 2.2vw, 24px) 24px;
+  padding: 16px;
+  border: 1px solid #b6e6cb;
+  border-radius: 6px;
+  background: #effcf4;
+  color: #166534;
+  font-weight: 600;
+}
+@container cc-pricing (max-width: 39.99rem) {
+  .cc-pricing-wrapper #googleInquiryForm { grid-template-columns: minmax(0, 1fr); }
+  .cc-pricing-wrapper .cc-inquiry__group:nth-of-type(5) { grid-column: auto; }
+}
+@supports not (container-type: inline-size) {
+  @media (max-width: 639px) {
+    .cc-pricing-wrapper #googleInquiryForm { grid-template-columns: minmax(0, 1fr); }
+    .cc-pricing-wrapper .cc-inquiry__group:nth-of-type(5) { grid-column: auto; }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cc-pricing-wrapper .cc-inquiry__submit { transition: none; }
+}
+</style>
 </head>
 
 <body>
@@ -828,14 +929,61 @@
         </tr>
       </tbody>
     </table>
+
+    <!-- Запитване чрез Google Forms -->
+<section class="cc-inquiry" aria-labelledby="cc-inquiry-heading">
+      <h3 id="cc-inquiry-heading">Запитване за персонализирана оферта или програма</h3>
+      <p>Имате въпроси относно груповите ни работилници или корпоративни програми? Изпратете запитване чрез формата:</p>
+
+      <iframe name="gform_redirect_frame_bg" id="gform_redirect_frame_bg" style="display:none;" onload="if(window.formSubmitted){handleSubmissionSuccess();}"></iframe>
+
+      <form 
+        id="googleInquiryForm" 
+        action="https://docs.google.com/forms/d/e/1FAIpQLSel3cGuP3RXR_A1zemrDVQV78ULxmfNRwwY7cEkAjxz7YbuHQ/formResponse" 
+        method="POST" 
+        target="gform_redirect_frame_bg" 
+        onsubmit="window.formSubmitted = true;">
+
+        <div class="cc-inquiry__group">
+          <label for="entry_name">Вашето име *</label>
+          <input type="text" id="entry_name" name="entry.897522081" required placeholder="Ивана Иванова">
+        </div>
+
+        <div class="cc-inquiry__group">
+          <label for="entry_email">Имейл адрес *</label>
+          <input type="email" id="entry_email" name="entry.1768384442" required placeholder="ivana@example.com">
+        </div>
+
+        <div class="cc-inquiry__group">
+          <label for="entry_interest">Програма или работилница, от която се интересувате</label>
+          <input type="text" id="entry_interest" name="entry.697442927" placeholder="напр. Работилница за AI, Корпоративен Коучинг">
+        </div>
+
+        <div class="cc-inquiry__group">
+          <label for="entry_discount">Код за отстъпка / реферален код (по избор)</label>
+          <input type="text" id="entry_discount" name="entry.525163623" placeholder="напр. EARLYBIRD10">
+        </div>
+
+        <div class="cc-inquiry__group">
+          <label for="entry_message">Съобщение / Нужди на организацията или екипа *</label>
+          <textarea id="entry_message" name="entry.1458129932" rows="4" required placeholder="Споделете повече за размера на екипа, желаните срокове или целите на коучинга..."></textarea>
+        </div>
+
+        <button type="submit" class="cc-inquiry__submit" id="submitBtn">Изпрати запитване</button>
+      </form>
+
+      <div id="confirmationMessage" role="status" aria-live="polite">
+        Благодарим ви! Вашето запитване беше изпратено успешно. Ще се свържем с вас възможно най-скоро.
+      </div>
+    </section>
   </div>
 
 <!-- The footer remains inside the embedded HTML page in normal document flow. -->
 <footer class="cc-page-footer" lang="bg" aria-label="Долен колонтитул на Courageous Coaches">
   <div class="cc-page-footer__newsletter">
     <a class="cc-page-footer__newsletter-link"
-       href="https://bg.courageouscoaches.com/newsletter-subscription"
-       target="_blank" rel="noopener noreferrer">Абонирай се за нашия бюлетин</a>
+       href="https://www.courageouscoaches.com/newsletter-subscription"
+       target="_blank" rel="noopener noreferrer">Subscribe to Our Newsletter</a>
   </div>
   
   <div class="cc-page-footer__content">
@@ -891,6 +1039,18 @@
     </p>
   </div>
 </footer>
+
+<script>
+    window.formSubmitted = false;
+
+    function handleSubmissionSuccess() {
+      const form = document.getElementById('googleInquiryForm');
+      const confirmation = document.getElementById('confirmationMessage');
+      
+      form.reset();
+      form.style.display = 'none';
+      confirmation.style.display = 'block';
+    }
+  </script>
 </body>
 </html>
-
