@@ -713,6 +713,22 @@
   border-color: #cf1454;
 }
 .cc-pricing-wrapper .cc-inquiry__submit:focus-visible { outline: 3px solid #0B9ED3; outline-offset: 3px; }
+.cc-pricing-wrapper .cc-inquiry__privacy {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: rgba(28, 28, 28, .82);
+  font-size: var(--cc-font-label);
+  line-height: 1.6;
+}
+.cc-pricing-wrapper .cc-inquiry__privacy a {
+  color: #08779F;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.cc-pricing-wrapper .cc-inquiry__privacy a:focus-visible {
+  outline: 3px solid #0B9ED3;
+  outline-offset: 3px;
+}
 .cc-pricing-wrapper #confirmationMessage {
   display: none;
   margin: 0 clamp(16px, 2.2vw, 24px) 24px;
@@ -970,6 +986,7 @@
         </div>
 
         <button type="submit" class="cc-inquiry__submit" id="submitBtn">Изпрати запитване</button>
+        <p class="cc-inquiry__privacy">С натискането на „Изпрати запитване“ потвърждавате, че приемате нашата <a href="https://bg.courageouscoaches.com/privacy-policy" target="_blank" rel="noopener noreferrer">Политика за поверителност</a>.</p>
       </form>
 
       <div id="confirmationMessage" role="status" aria-live="polite">
