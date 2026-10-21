@@ -780,6 +780,13 @@ body { margin: 0; background: #FFFFFF; color: #1C1C1C; }
   border-radius: 6px;
 }
 .cc-pricing-wrapper .btn-submit:hover { background: #C91552; }
+.cc-pricing-wrapper .form-section .cc-inquiry__privacy {
+  grid-column: 1 / -1;
+  margin: 16px 0 0;
+  color: #555;
+  font-size: var(--cc-font-label);
+  line-height: 1.6;
+}
 .cc-pricing-wrapper #confirmationMessage { grid-column: 1 / -1; }
 @media (max-width: 640px) {
   .cc-pricing-wrapper #googleInquiryForm {
@@ -800,7 +807,7 @@ body { margin: 0; background: #FFFFFF; color: #1C1C1C; }
       All workshops and programs can be tailored to your organisation’s context, needs, and goals.
     </p>
 <p class="cc-pricing-note">
-      For information about programs, team and group coaching pricing, or to receive a personalised proposal, please get in touch by using the form bellow.
+      For information about pricing for our programs, group and team coaching, or a personalised quote, please contact us by completing the form below.
     </p>
 <p class="cc-pricing-note">
 <strong>Let’s explore how we can support your team.</strong>
@@ -1009,6 +1016,7 @@ body { margin: 0; background: #FFFFFF; color: #1C1C1C; }
 <textarea id="entry_message" name="entry.1045561131" placeholder="Tell us about your team size, timing, or coaching goals..." required="" rows="4"></textarea>
 </div>
 <button class="btn-submit" id="submitBtn" type="submit">Send Inquiry</button>
+<p class="cc-inquiry__privacy">By clicking “Send Inquiry”, you confirm your acceptance of our <a href="https://www.courageouscoaches.com/privacy-policy" rel="noopener noreferrer" target="_blank">Privacy Policy</a>.</p>
 </form>
 <div id="confirmationMessage">
       Thank you! Your inquiry has been submitted. We will get back to you shortly.
